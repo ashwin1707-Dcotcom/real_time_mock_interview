@@ -1,0 +1,55 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style type="">
+        .table-hover th{
+            background-color: black;
+            text-transform: uppercase;
+            color: white;
+        ;}
+
+    </style>
+</head>
+
+<body>
+<table width="722" height="211" border="1" class="table table-hover">
+  <caption>&nbsp;
+  </caption>
+  <tr  >
+    <th width="52" height="77" scope="col">sl no</th>
+
+    <th width="139" scope="col">vacancy type</th>
+    <th width="87" scope="col">job title</th>
+    <th width="93" scope="col">job requirment</th>
+    <th width="70" scope="col">apply date</th>
+    <th width="80" scope="col">salary</th>
+    <th width="80" scope="col"></th>
+    <th width="80" scope="col"></th>
+    <th width="80" scope="col"></th>
+
+  </tr>
+     {% for i in data %}
+  <tr>
+      <td height="69">{{ forloop.counter }}&nbsp;</td>
+
+    <td>{{ i.vacancy_type }}&nbsp;</td>
+    <td>&nbsp;{{ i.job_title }}&nbsp;</td>
+    <td>&nbsp;{{i.job_requirement}}&nbsp;</td>
+    <td>{{ i.apply_date}}&nbsp;</td>
+    <td>{{ i.salary }}&nbsp;</td> <td><p><a href="/edit_vacancy/{{ i.id }}#aa"class="btn btn-success" style="background-color: #90cc76">  edit</a></p>
+    <p><a href="/delete_vacency/{{ i.id }}#aa" class="btn btn-danger" style="background-color: #cc3e2f"> delete</a></p></td>
+    <td><p><a href="/question_add/{{ i.id }}#aa" class="btn btn-danger" style="background-color: #0c5460">add question</a></p>
+    <p><a href="/view_question/{{ i.id }}#aa"class="btn btn-danger" style="background-color: #0c5460" >view question</a></p></td>
+      <td><p><a href="/view_candidates/{{ i.id }}#aa" class="btn btn-danger" style="background-color: #fba84a" width="300px">view candidate</a></p></td>
+{#    <p><a href="/view_shortlist_candidates/{{ i.id }}#aa"class="btn btn-danger" style="background-color: #fba84a"  >view shortlisted candidate</a></p></td>#}
+
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><table width="809" height="180" border="1"CLASS="table table-bordered">
+  <tr>
+      <th width="72" scope="col">slno</th>
+    <th width="102" scope="col">date</th>
+    <th width="145" scope="col">name</th>
+    <th width="218" scope="col">company</th>
+    <th width="238" scope="col">review</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+       <td height="69">{{ forloop.counter }}&nbsp;</td>
+    <td>{{i.date}}&nbsp;</td>
+    <td>&nbsp;{{i.USER.name}}&nbsp;</td>
+    <td>{{i.COMPANY.name}}&nbsp;</td>
+    <td>{{i.review}}&nbsp;</td>
+  </tr>
+     {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

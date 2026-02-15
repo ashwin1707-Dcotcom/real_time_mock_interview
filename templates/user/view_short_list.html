@@ -1,0 +1,36 @@
+{% extends "user/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table width="245" border="1"CLASS="table table-bordered">
+  <tr>
+      <th>slno</th>
+    <th width="45" scope="col">name</th>
+    <th width="45" scope="col">email</th>
+  
+    <th width="42" scope="col">staus</th>
+
+  </tr>
+  <tr>
+        {% for i in data %}
+            <td>{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.USER.name }}</td>
+    <td>&nbsp;{{ i.USER.email }}</td>
+    
+    <td>{{ i.status }}</td>
+
+  </tr>
+
+     {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

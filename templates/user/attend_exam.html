@@ -1,0 +1,85 @@
+
+
+
+
+{% extends "user/index.html" %}
+
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Emotion Detection</title>
+    <style>
+        tr {
+            color: black;
+        }
+        #button {
+            display: none; /* Initially hide the button */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="form1" name="form1" method="post" action="/handle_post/{{ data.id }}#aa">
+        <h2>{{ request.session.count }}</h2>
+        <table width="150" border="4" cellspacing="1" cellpadding="3" class="table table-stripped">
+            <tr>
+                <th scope="row">Question</th>
+                <td><input type="text" name="index" value="{{ data.question }}" id="index" class="form-control" required /></td>
+            </tr>
+            <tr style="color: black">
+                <th colspan="2" scope="row">
+                    <p>
+                        <label><input type="radio" name="answer" value="{{ data.option_A }}" id="RadioGroup1_0" /> {{ data.option_A }}</label><br />
+                        <label><input type="radio" name="answer" value="{{ data.option_B }}" id="RadioGroup1_1" /> {{ data.option_B }}</label><br />
+                        <label><input type="radio" name="answer" value="{{ data.option_C }}" id="RadioGroup1_2" /> {{ data.option_C }}</label><br />
+                        <label><input type="radio" name="answer" value="{{ data.option_D }}" id="RadioGroup1_3" /> {{ data.option_D }}</label><br />
+                    </p>
+                </th>
+            </tr>
+            <input type="hidden" name="selected_answer" id="selected_answer" value="{{ data.answer }}" />
+            <tr>
+                <th colspan="2" scope="row">
+                    <div align="center">
+                        <!-- Button initially hidden -->
+                        <input type="submit" name="button" id="button" value="Submit" class="btn btn-danger" style="width: 200px" />
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Starting AJAX request for emotion detection...");
+
+            $.ajax({
+                url: "/play_newcam",
+                type: "POST",
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (response) {
+                    console.log("AJAX Success Response:", response);
+
+                    // Check if emotion is detected
+                    if (response.status === 1) {
+                        console.log("Emotion detected - Showing the button.");
+                        $('#button').show(); // Show the button
+                    } else {
+                        console.log("Emotion not detected - Button remains hidden.");
+                        $('#button').hide(); // Ensure button stays hidden
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                    alert("Error during emotion detection. Please try again.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

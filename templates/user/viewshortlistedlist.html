@@ -1,0 +1,55 @@
+{% extends 'user/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+
+<body><form action="" method="get">
+<table width="200" border="1"  border="1"  align="center" cellpadding="10" cellspacing="10" class="table-bordered">
+  <tr>
+    <th scope="col">ID</th>
+{#    <th scope="col">CV</th>#}
+    <th scope="col">STATUS</th>
+    <th scope="col">VACANCY</th>
+    <th scope="col">DATE</th>
+    <th scope="col">COMPANY INFO</th>
+  </tr>
+     {% for i in data %}
+  <tr>
+
+    <td>{{ forloop.counter }}</td>
+{#    <td><a href="{{ i.resume }}">VIEW RESUME</a> </td>#}
+    <td>{{ i.status }}</td>
+    <td>{{ i.VACANCY.job_type }}</td>
+    <td>{{ i.VACANCY.date }}</td>
+    <td>{{ i.VACANCY.COMPANY.company_name }}<br>{{ i.VACANCY.COMPANY.place }}<br>{{ i.VACANCY.COMPANY.email }}</td>
+    <td><a href="/view_exam_date_student/{{ i.id }}">VIEW EXAM DATE</a></td>
+      {% endfor %}
+  </tr>
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}

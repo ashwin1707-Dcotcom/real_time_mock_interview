@@ -1,0 +1,46 @@
+{% extends "user/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="653" height="183" border="1"CLASS="table table-bordered">
+  <tr>
+      <th>slno</th>
+    <th scope="col">name</th>
+    <th scope="col">email</th>
+    <th scope="col">contact</th>
+    <th scope="col">license</th>
+    <th scope="col">image</th>
+    <th scope="col">location</th>
+      <th></th>
+ 
+  </tr>
+      {% for i in data %}
+  <tr>
+  <td>{{ forloop.counter }}</td>
+    <td>{{ i.name }}</td>
+    <td>&nbsp;{{ i.email }}</td>
+    <td>&nbsp;{{ i.contact }}</td>
+    <td><a href="{{ i.lisence }}"class="btn btn-success">View</a> </td>
+    <td><img src="{{i.image }}"height="100" width="100"> </td>
+      <td><a href="https://www.google.com/maps/?q={{ i.latitude }},{{ i.longitude }}#aa"class="btn btn-success">Track</a> </td>
+  <td><a href="/view_vacancy/{{ i.id }}#aa" class="btn btn-success">view vacency</a><br><br>
+  <a href="/review_company/{{ i.id }}#aa" class="btn btn-success">send review</a>
+  <a href="/chattt/{{ i.id }}#aa" class="btn btn-success">Chat</a>
+
+
+  </td>
+ 
+  </tr>
+      {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

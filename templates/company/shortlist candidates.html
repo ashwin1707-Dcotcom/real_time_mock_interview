@@ -1,0 +1,50 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+<table width="715" border="1"CLASS="table table-bordered">
+  <tr>
+    <th width="51" height="56" scope="col">name</th>
+    <th width="51" scope="col">email</th>
+    <th width="71" scope="col">contact</th>
+    <th width="60" scope="col">adress</th>
+    <th width="94" scope="col">exam date</th>
+    <th width="117" scope="col">exam time</th>
+    <th width="101" scope="col">status</th>
+
+      <th></th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td >&nbsp;{{ i.USER.name }}</td>
+    <td>&nbsp;{{ i.USER.email }}&nbsp;</td>
+    <td>&nbsp;{{ i.USER.contact }}</td>
+    <td>{{ i.USER.place }},{{ i.CANDIDATE.USER.pin }},{{ i.CANDIDATE.USER.post }}&nbsp;</td>
+    <td>{{ i.exam_date }}</td>
+    <td>{{ i.exam_time }}&nbsp;</td>
+    <td>&nbsp;{{ i.status }}</td>
+    {% if i.exam_date == 'pending' %}
+  <td><a href="/schedule_test/{{ i.USER.id }}#aa" class="btn btn-success">schedule test</a> <br><br>
+  {% else %}
+         <td><b>EXAM DATE::</b>{{ i.exam_date }}</td>
+  {% endif %}
+      {% if i.status == 'scheduled' %}
+          <td><a href="/mark_candidates/{{ i.USER.id }}#aa"class="btn btn-success">mark candidates</a></td>
+
+      {% endif %}
+{# marked#}
+{#  {% endif %}#}
+      </td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "user/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table width="200" border="1"CLASS="table table-bordered">
+  <tr>
+    <th scope="col">vacency</th>
+    <th scope="col">job title</th>
+    <th scope="col">job requirement</th>
+    <th scope="col">appiled date</th>
+    <th scope="col">salary</th>
+    <th scope="col">company info</th>
+      <th>exam date</th>
+      <th>exam time</th>
+      <th></th>
+  </tr>
+     {% for i in data %}
+  <tr>
+    <td>{{ i.VACENCY.vacancy_type }}</td>
+    <td>{{ i.VACENCY.job_title }}</td>
+    <td>&nbsp;{{ i.VACENCY.job_requirement }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>&nbsp;{{ i.VACENCY.salary }}</td>
+    <td>&nbsp;{{ i.VACENCY.COMPANY.name }}</td>
+  <td>{{ i.exam_date }}</td>
+  <td>{{ i.exam_time }}</td>
+  <td>
+      {% if i.exam_date == date %}
+        {% if i.exam_time == t %}
+
+            <a href="/view_sample_question/{{ i.id }}#aa" class="btn btn-success">Attend exam</a><br>
+        {% endif %}
+      {% endif %}
+  <p><a href="/view_shortlisted_list/{{ i.id }}#aa" class="btn btn-success">view short list</a> </p></td>
+  </tr>
+       {% endfor %}
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}

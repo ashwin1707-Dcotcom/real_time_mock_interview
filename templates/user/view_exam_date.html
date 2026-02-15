@@ -1,0 +1,53 @@
+
+
+
+
+{% extends "user/index.html" %}
+
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        tr{
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-bordered">
+
+    <tr>
+      <th scope="row">Exam Date</th>
+      <td>{{ data.exam_date }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Exam Time</th>
+      <td>{{ data.exam_time }}</td>
+    </tr>
+     <tr>
+         <th rowspan="2" scope="row">
+{#             {% if data1 %}#}
+                 <td><a href="/view_sample_question/{{ data.VACENCY.id }}#aa" class="btn btn-danger">Attend Exam</a></td>
+{#                {% else %}#}
+                    <span class="text-danger">Exam Date has passed</span>
+{#                {% endif %}#}
+            </th>
+
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,40 @@
+{% extends "user/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table width="200" border="1"CLASS="table table-bordered">
+  <tr>
+      <td>slno</td>
+    <th scope="col">vacency</th>
+    <th scope="col">job title</th>
+    <th scope="col">job requirment</th>
+    <th scope="col">company</th>
+    <th scope="col">salary</th>
+     <th scope="col">apply date</th>
+      <th></th>
+  </tr>
+     {% for i in data %}
+  <tr>
+  <td>{{ forloop.counter }}</td>
+    <td>{{ i.vacancy_type }}</td>
+    <td>{{ i.job_title }}</td>
+    <td>&nbsp;{{ i.job_requirement }}</td>
+      <td>{{ i.COMPANY.name }}</td>
+    <td>{{ i.salary }}&nbsp;</td>
+  <td>{{ i.apply_date }}&nbsp;</td>
+  <td><a href="/apply_vacency/{{ i.id }}#aa"class="btn btn-dark">Apply</a> </td>
+  </tr>
+     {% endfor %}
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}

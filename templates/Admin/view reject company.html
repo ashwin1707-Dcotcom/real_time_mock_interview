@@ -1,0 +1,38 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><table width="421" height="142" border="1"CLASS="table table-bordered">
+  <caption>&nbsp;
+  </caption>
+  <tr>
+    <th width="35" scope="col">slno</th>
+    <th width="47" scope="col">name</th>
+    <th width="53" scope="col">image</th>
+    <th width="47" scope="col">email</th>
+    <th width="62" scope="col">contact</th>
+    <th width="65" scope="col">&nbsp;</th>
+    
+  </tr>
+     {% for i in data %}
+  <tr>
+    <td height="69">{{ forloop.counter }}</td>
+    <td>{{i.name}}&nbsp;</td>
+    <td>{{i.image}}&nbsp;</td>
+    <td>{{i.email}}&nbsp;</td>
+    <td>{{i.contact}}&nbsp;</td>
+    <td><p><a href="#" class="btn btn-success">lisence</a></p>
+    <p><a href="#">location</a></p></td>
+   
+  </tr>
+         {% endfor %}
+  
+</table>
+</body>
+</html>
+{% endblock %}

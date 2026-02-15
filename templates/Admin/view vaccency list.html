@@ -1,0 +1,42 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<table width="1431" height="211" border="1"CLASS="table table-bordered">
+  <caption>&nbsp;
+  </caption>
+  <tr>
+    <th width="143" height="77" scope="col">sl no</th>
+    <th width="190" scope="col">company</th>
+    <th width="159" scope="col">vacancy type</th>
+    <th width="121" scope="col">job title</th>
+    <th width="184" scope="col">job requirment</th>
+    <th width="139" scope="col">apply date</th>
+    <th width="80" scope="col">salary</th>
+
+
+  </tr>
+     {% for i in data %}
+  <tr>
+      <td height="69">{{ forloop.counter }}&nbsp;</td>
+    <td>{{i.COMPANY.name}}&nbsp;</td>
+    <td>{{i.vacancy_type}}&nbsp;</td>
+    <td>&nbsp;{{i.job_title}}&nbsp;</td>
+    <td>&nbsp;{{i.job_requirement}}&nbsp;</td>
+    <td>{{i.apply_date}}&nbsp;</td>
+    <td>{{ i.salary }}&nbsp;</td>
+
+   
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}
+

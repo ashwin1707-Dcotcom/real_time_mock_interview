@@ -1,0 +1,55 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <style type="">
+        .table-hover th{
+            background-color: black;
+            text-transform: uppercase;
+            color: white;
+        ;}
+
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="1248" height="214" border="1" class="table table-hover">
+    <tr>
+      <th width="138" height="106" scope="col">sl no</th>
+      <th width="215" scope="col">vacancy</th>
+      <th width="49" scope="col">date</th>
+      <th width="60" scope="col">status</th>
+{#      <th width="100" scope="col">exam date</th>#}
+      <th width="101" scope="col">exam time</th>
+      <th width="135" scope="col">interview date</th>
+      <th width="136" scope="col">interview time</th>
+      <th width="116"></th>
+        <th width="134">Exam Date</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.VACENCY.vacancy_type }}</td>
+      <td>{{ i.date }}</td>
+      <td>&nbsp;{{ i.status }}</td>
+{#      <td>{{ i.exam_date }}</td>#}
+      <td>&nbsp;{{ i.exam_time }}</td>
+      <td>&nbsp;{{ i.interview_date }}</td>
+      <td>{{ i.interview_time }}&nbsp;</td>
+      <td><a href="/chatt/{{ i.USER.id }}#aa"class="btn btn-success">chat</a></td>
+        {% if i.exam_date == 'pending' %}
+    <td><a href="/schedule_test/{{ i.id }}#aa"class="btn btn-success">shedule test</a> </td>
+    {% else %}
+    <td>{{ i.exam_date }}</td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

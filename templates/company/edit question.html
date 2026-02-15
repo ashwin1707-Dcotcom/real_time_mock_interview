@@ -1,0 +1,53 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form id="form1" name="form1" method="post" action="/edit_questions_post/{{ data.id }}">
+  <table width="542" border="1"CLASS="table table-bordered">
+    <tr>
+      <th >question</th>
+      <td >
+      <textarea name="textarea" id="textarea" cols="45"rows="5" class="form-control"required> {{data.question}}</textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">option A</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"required value="{{data.option_A}}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">option B</th>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" class="form-control"required value="{{data.option_B}}"/></td>
+    </tr>
+    <tr>
+      <th scope="row">option C</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" class="form-control"required value="{{data.option_C}}"/></td>
+    </tr>
+    <tr>
+      <th scope="row">option D</th>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" class="form-control"required value="{{data.option_D}}" /></td>
+    </tr>
+    <tr>
+    <td height="24"> ANSWER</td>
+    <td height="24"><select name="select" id="select" class="form-control" required>
+        <option value="option A" {% if data.answer == 'option A' %}selected{% endif %}>option A</option>
+        <option value="option B" {% if data.answer == 'option B' %}selected{% endif %}>option B</option>
+        <option value="option D" {% if data.answer == 'option C' %}selected{% endif %}>option C</option>
+        <option value="option A" {% if data.answer == 'option D' %}selected{% endif %}>option D</option>
+    </select></td>
+  </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="edit" class="btn btn-dark" /></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

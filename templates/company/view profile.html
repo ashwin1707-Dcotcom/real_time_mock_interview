@@ -1,0 +1,141 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/edit_profile_update/{{ data.id }}" method="post" enctype="multipart/form-data">
+    <table width="329" border="1" CLASS="table table-hover table-striped">
+  <tr>
+    <th width="126" scope="row">name</th>
+      <td>
+                <input type="text" name="textfield" id="textfield"  value="{{ data.name }}" class="form-control" required/>
+
+      </td>
+
+
+  </tr>
+  <tr>
+    <th scope="row">email</th>
+     <td>
+                <input type="text" name="textfield2" id="textfield4"  value="{{ data.email }}"class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">contact</th>
+     <td>
+                <input type="text" name="textfield3" id="textfield3"  value="{{ data.contact }}" class="form-control "required pattern="[6-9][0-9]{9}" maxlength="10"/>
+
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">lisence</th>
+      <td>
+          <a href="{{ data.lisence }}">license</a>
+
+              <input type="file" name="lis" id="fileField"  class="form-control "/>
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">image</th>
+     <td><img src="{{ data.image }}" width="90" height="90"/>
+                <input type="file" name="img" id="fileField"  accept="/image/*"  class="form-control "/>
+
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">latitude</th>
+      <td>
+                <input type="text" name="latitude" id="lt"  value="{{ data.latitude }}"  class="form-control "readonly/>
+
+      </td>
+  </tr>
+        <tr>
+            <td colspan="2">
+                <div id="gmap"></div>
+            </td>
+        </tr>
+  <tr>
+    <th scope="row">longitude</th>
+      <td>
+                <input type="text" name="longitude" id="lg"  value="{{ data.longitude }}"  class="form-control "readonly/>
+
+      </td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+{#  <table width="325" border="1">#}
+    <tr>
+      <th scope="row"><input type="submit" name="button" id="button" value="update" class="btn btn-dark" /></th>
+    </tr>
+{#  </table>#}
+</form>
+</body>
+</html>
+    <style type="text/css">
+
+
+    #gmap {
+        width: 100%;
+        height: 200px;
+        border: double;
+    }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&sensor=false"></script>
+<script type="text/javascript">
+    var map, marker;
+    initialize();
+
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(11.868536, 75.363197);
+        var myOptions = {
+            zoom: 7,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+        google.maps.event.addListener(map, "click", function (event) {
+            var clickLat = event.latLng.lat();
+            var clickLon = event.latLng.lng();
+            document.getElementById("lt").value = clickLat.toFixed(5);
+            document.getElementById("lg").value = clickLon.toFixed(5);
+            marker.setPosition(new google.maps.LatLng(clickLat, clickLon));
+        });
+
+        GetMylocation();
+    }
+
+    function GetMylocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        document.getElementById("lt").value = lat;
+        document.getElementById("lg").value = lon;
+
+        var myLatlng = new google.maps.LatLng(lat, lon);
+        map.setCenter(myLatlng);
+        map.setZoom(14);
+        marker.setPosition(myLatlng);
+    }
+</script>
+{% endblock %}

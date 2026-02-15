@@ -1,0 +1,48 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <style type="">
+        .table-hover th{
+            background-color: black;
+            text-transform: uppercase;
+            color: white;
+        ;}
+
+    </style>
+</head>
+
+<body><form action="" method="get"><table width="802" height="154" border="1" class="table table-hover">
+  <tr>
+    <th width="118" height="31" scope="col">sl no</th>
+    <th width="118" scope="col">question</th>
+    <th width="139" scope="col">option a</th>
+    <th width="121" scope="col">option b</th>
+    <th width="99" scope="col">option c</th>
+    <th width="101" scope="col">option d</th>
+    <th width="122" scope="col">correct answer</th>
+
+    <th width="122" scope="col"></th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.question }}</td>
+    <td>{{ i.option_A }}</td>
+    <td>&nbsp;{{ i.option_B }}</td>
+    <td>&nbsp;{{ i.option_C }}</td>
+    <td>&nbsp;{{ i.option_D }}</td>
+    <td>{{ i.answer }}</td>
+
+    <td><p><a href="/edit_questions/{{ i.id }}#aa"class="btn btn-success">edit</a></p>
+      <p><a href="/delete_question/{{ i.id }}#aa"class="btn btn-success">delete</a></p></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

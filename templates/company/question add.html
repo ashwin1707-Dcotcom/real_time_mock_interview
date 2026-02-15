@@ -1,0 +1,66 @@
+{% extends "company/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/question_add_post/{{ id }}">
+  <table width="542" border="1"CLASS="table table-bordered">
+    <tr>
+      <th width="167" scope="row">question</th>
+      <td width="117"><label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5"class="form-control" required></textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">option A</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"class="form-control" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">option B</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2"class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">option C</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3"class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">option D</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" class="form-control" required/></td>
+    </tr>
+   <tr>
+      <th scope="row">ANS:</th>
+      <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="A" id="RadioGroup1_0" />
+          A</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="B" id="RadioGroup1_1" />
+          B</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="C" id="RadioGroup1_2" />
+          C</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="D" id="RadioGroup1_3" />
+          D</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="add" class="btn btn-dark" /></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
