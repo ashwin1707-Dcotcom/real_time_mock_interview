@@ -1,3 +1,15 @@
+# Real Time Mock Interview System
+---
+
+## Project Description
+
+The Real Time Mock Interview System is a web-based application designed to simulate interview environments and evaluate candidate performance.  
+It includes facial expression detection, interview question modules, and performance analysis.
+
+---
+
+
+
 <h2>Project Screenshots</h2>
 
 <h3>First Page</h3>
@@ -20,3 +32,17 @@
 
 <h3>Admin - Placed Candidate</h3>
 <img src="assets/admin,placedcandidate.jpeg" width="800">
+
+
+
+---
+
+## Copyright & Usage Notice
+
+© 2026 Ashwin P & Anuram MK. All Rights Reserved.
+
+This project is publicly visible for viewing and demonstration purposes only.
+
+No part of this code may be copied, modified, distributed, published, or used in any form without explicit written permission from the authors.
+
+Unauthorized use of this project is strictly prohibited.
